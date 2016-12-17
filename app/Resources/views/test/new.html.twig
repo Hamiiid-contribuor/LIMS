@@ -25,9 +25,6 @@
             font-family : inherit;
             font-size   : 100%;
         }
-        .nav-item{
-            border: 1px solid black ;
-        }
 
 
     </style>
@@ -36,19 +33,25 @@
     <div>
         <br/>
     </div>
-    <!-- navbar de parametrage  -->
-    <nav class=" col-md-10 col-md-offset-1 navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a style="font-family: 'Times New Roman' ; font-size: 25px ; font-weight: bold;" class="navbar-brand " href="#">Parametrage </a>
-            </div>
+    <div class="col-md-10 col-md-offset-1">
+        <nav class="navbar navbar-light bg-faded">
+
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('analyse_new') }}">Analyses</a></li>
-                <li><a href="{{ path('categorie_new') }}">Categories</a></li>
-                <li class="active"><a  href="{{ path('test_new') }}">Tests</a></li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('analyse_new') }}">Analyses  <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('categorie_new') }}">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('test_new') }}">Tests </a>
+                </li>
+
             </ul>
-        </div>
-    </nav>
+
+        </nav>
+
+    </div>
 
 
     <!-- pannel  de recherche -->
@@ -61,11 +64,11 @@
                     <form method="post"  action=""  >              
                         <div class="col-md-10 row col-md-offset-1">
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label>Libelle</label>
-                                <input class="form-control input" placeholder="Libelle ">
+                                <input class="form-control input" placeholder="Code ">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label>Analyse</label>
                                 <select class="form-control input">
                                     <option>Option 1</option>
@@ -75,7 +78,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label>Categorie</label>
                                 <select class="form-control input">
                                     <option>Option 1</option>
@@ -118,33 +121,26 @@
 
                     <div class="form-group ">
                         <label>Categorie  </label>
-                        <label><span style="color: #f68484!important">{{form_errors(form.categorie)}}</span></label>
-                            {{ form_widget(form.categorie , { 'attr': {'class': 'form-control input select2' }  }) }}
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-10">
-                            <label>Unite de Mesure  </label>
-                            <label><span style="color: #f68484!important">{{form_errors(form.uniteMesure)}}</span></label>
-                                {{ form_widget(form.uniteMesure , { 'attr': {'class': 'form-control input' }  }) }}
-                        </div>
-
-                        <div class="col-md-2">
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-5">
-                            <label>Valeur Min</label>
-                            <label><span style="color: #f68484!important">{{form_errors(form.valeurMin)}}</span></label>
-                                {{ form_widget(form.valeurMin , { 'attr': {'class': 'form-control input' }  }) }}
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label>Valeur Max </label>
-                            <label><span style="color: #f68484!important">{{form_errors(form.valeurMax)}}</span></label>
-                                {{ form_widget(form.valeurMax , { 'attr': {'class': 'form-control input' }  }) }}
-                        </div>
+                        <label><span style="color: #f68484!important">{{form_errors(form.)}}</span></label>
+                            {{ form_widget(form.analyse , { 'attr': {'class': 'form-control input select2' }  }) }}
                     </div>
 
+
+                    <div class="form-group ">
+                        <label>Valeur Minimale </label>
+                        <label><span style="color: #f68484!important">{{form_errors(form.valeurMin)}}</span></label>
+                            {{ form_widget(form.valeurMin , { 'attr': {'class': 'form-control input' }  }) }}
+                    </div>
+                    <div class="form-group ">
+                        <label>Valeur Maximale  </label>
+                        <label><span style="color: #f68484!important">{{form_errors(form.valeurMax)}}</span></label>
+                            {{ form_widget(form.valeurMax , { 'attr': {'class': 'form-control input' }  }) }}
+                    </div>
+                    <div class="form-group ">
+                        <label>Unite de Mesure  </label>
+                        <label><span style="color: #f68484!important">{{form_errors(form.uniteMesure)}}</span></label>
+                            {{ form_widget(form.uniteMesure , { 'attr': {'class': 'form-control input' }  }) }}
+                    </div>
 
                     <div class="form-group ">
                         <label>Description </label>
@@ -192,8 +188,8 @@
                                     <td>{{ test.libelle }}</td>
                                     <td>{{ test.categorie }}</td>
                                     <td>[ {{ test.valeurMin }} , {{ test.valeurMax }} ] </td>
-                                    <td>{{ test.uniteMesure }}</td>
                                     <td>{{ test.commentaire }}</td>
+                                    <td>{{ test.analyse }}</td>
                                     <td> 
                                         <a href=""  style="color : red ; " class="fa fa-trash">     </a>
                                         <a href="" style="color : green ; " class="fa  fa-pencil-square">     </a>
